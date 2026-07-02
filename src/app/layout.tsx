@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Archivo({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["500", "600", "700", "800"],
