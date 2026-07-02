@@ -3,10 +3,11 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { site } from "@/data/site";
+import { useContent } from "./ContentProvider";
 
 export default function StickyCTA() {
   const ref = useRef<HTMLDivElement>(null);
+  const { settings: site } = useContent();
 
   useGSAP(
     () => {

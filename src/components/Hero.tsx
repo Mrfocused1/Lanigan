@@ -4,11 +4,12 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { site } from "@/data/site";
+import { useContent } from "./ContentProvider";
 
-export default function Hero({ image }: { image: string }) {
+export default function Hero() {
   const root = useRef<HTMLElement>(null);
   const imgWrap = useRef<HTMLDivElement>(null);
+  const { hero, settings } = useContent();
 
   useGSAP(
     () => {
@@ -52,18 +53,17 @@ export default function Hero({ image }: { image: string }) {
         {/* Copy */}
         <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
           <h1 className="h-hero font-display text-ink">
-            <Line>Real</Line>
-            <Line>projects.</Line>
+            <Line>{hero.line1}</Line>
+            <Line>{hero.line2}</Line>
             <span className="hero-line block overflow-hidden pb-[0.14em]">
               <span className="mask-inner block text-brand" style={{ willChange: "transform" }}>
-                Real work.
+                {hero.line3}
               </span>
             </span>
           </h1>
 
           <p className="hero-fade mt-8 max-w-md text-lg leading-relaxed text-muted">
-            A London builder for roofing, kitchens, bathrooms, carpentry and full renovations —
-            delivered tidy, on time and finished properly.
+            {hero.subtext}
           </p>
 
           <div className="hero-fade mt-9 flex flex-wrap items-center gap-4">
@@ -80,7 +80,7 @@ export default function Hero({ image }: { image: string }) {
         <div ref={imgWrap} className="relative lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2 lg:h-full">
             <Image
-              src={image}
+              src={hero.image}
               alt="Lanigan Builds on site in London"
               fill
               priority
@@ -94,12 +94,12 @@ export default function Hero({ image }: { image: string }) {
         {/* Details */}
         <div className="hero-fade flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-sm text-muted lg:col-start-1 lg:row-start-2">
           <span>
-            <strong className="text-ink">{site.serviceArea}</strong>
+            <strong className="text-ink">{settings.serviceArea}</strong>
           </span>
           <span>
             Roofing · Carpentry · <span className="text-ink">On-site builds</span>
           </span>
-          <span>{site.hours}</span>
+          <span>{settings.hours}</span>
         </div>
       </div>
     </section>

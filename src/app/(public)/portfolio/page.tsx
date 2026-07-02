@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import WorkGallery from "@/components/WorkGallery";
-import { projects, categories } from "@/lib/portfolio";
+import { categories } from "@/lib/portfolio";
+import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
     "Real Lanigan Builds projects across London — roofing, kitchens, bathrooms, carpentry, flooring and renovations.",
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const projects = await getProjects();
   return (
     <>
       <PageIntro eyebrow={`The work · ${projects.length} projects`} title="Real" accent="projects.">

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import AdminLogin from "@/components/admin/AdminLogin";
-import CRM from "@/components/admin/CRM";
+import AdminDashboard from "@/components/admin/AdminDashboard";
 
 export default function AdminPage() {
   const [session, setSession] = useState<Session | null>(null);
@@ -28,5 +28,5 @@ export default function AdminPage() {
   }
 
   if (!session) return <AdminLogin />;
-  return <CRM session={session} />;
+  return <AdminDashboard session={session} />;
 }

@@ -9,13 +9,15 @@ import WorkGallery from "@/components/WorkGallery";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import MaskText from "@/components/MaskText";
-import { projects, categories } from "@/lib/portfolio";
-import { site } from "@/data/site";
+import { categories } from "@/lib/portfolio";
+import { getContent, getProjects } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const [content, projects] = await Promise.all([getContent(), getProjects()]);
+  const { about, settings } = content;
   return (
     <>
-      <Hero image="/media/C8aLy3VILak_slide1.jpg" />
+      <Hero />
 
       <Marquee
         items={["Roofing", "Kitchens", "Bathrooms", "Carpentry", "Flooring", "Renovations"]}
@@ -27,28 +29,21 @@ export default function Home() {
         <div className="grid gap-14 lg:grid-cols-[1fr_0.85fr]">
           <div>
             <h2 className="h-section font-display max-w-2xl text-ink">
-              <MaskText text="A London builder that" />{" "}
-              <span className="text-brand"><MaskText text="finishes properly." delay={0.1} /></span>
+              <MaskText text={about.heading} />{" "}
+              <span className="text-brand"><MaskText text={about.accent} delay={0.1} /></span>
             </h2>
             <Reveal className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted" y={20}>
-              <p>
-                Lanigan Builds is a family-run construction company with over 20 years on the tools,
-                working across North London and just beyond the M25. From a slipped slate to a full
-                property refurbishment, we bring the same standard to every job — clean sites, honest
-                quotes and workmanship you can stand behind.
-              </p>
-              <p>
-                No subbed-out chaos, no disappearing acts. Just real trades, doing real work, on real
-                projects.
-              </p>
+              {about.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </Reveal>
 
             <Reveal className="mt-10 flex flex-wrap gap-4" y={16}>
               <Link href="/services" className="btn btn-primary">
                 Our services →
               </Link>
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="btn btn-ghost">
-                {site.instagramHandle}
+              <a href={settings.instagram} target="_blank" rel="noreferrer" className="btn btn-ghost">
+                {settings.instagramHandle}
               </a>
             </Reveal>
           </div>
@@ -56,7 +51,7 @@ export default function Home() {
           <Reveal y={40}>
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2">
               <Image
-                src="/media/Crsn4JxIJRK_slide1.jpg"
+                src={about.image}
                 alt="Lanigan Builds craftsmanship"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -141,19 +136,19 @@ export default function Home() {
             <div className="mt-10 space-y-5 border-t border-line pt-8 text-sm">
               <div>
                 <div className="eyebrow">Call</div>
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="link-sweep mt-1 block text-lg text-ink">
-                  {site.phone}
+                <a href={`tel:${settings.phone.replace(/\s/g, "")}`} className="link-sweep mt-1 block text-lg text-ink">
+                  {settings.phone}
                 </a>
               </div>
               <div>
                 <div className="eyebrow">Email</div>
-                <a href={`mailto:${site.email}`} className="link-sweep mt-1 block text-lg text-ink">
-                  {site.email}
+                <a href={`mailto:${settings.email}`} className="link-sweep mt-1 block text-lg text-ink">
+                  {settings.email}
                 </a>
               </div>
               <div>
                 <div className="eyebrow">Area</div>
-                <p className="mt-1 text-lg text-ink">{site.serviceArea}</p>
+                <p className="mt-1 text-lg text-ink">{settings.serviceArea}</p>
               </div>
             </div>
           </div>

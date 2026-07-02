@@ -26,9 +26,15 @@ Environment variables live in `.env.local` (Supabase URL + publishable key).
 
 ## Admin CRM
 
-Sign in at `/admin` with the Supabase Auth admin account (credentials kept out of source control — set/rotate them in Supabase).
+Sign in at `/admin` with the Supabase Auth admin account (credentials kept out of source control — set/rotate them in Supabase). The dashboard has three tabs:
 
-The dashboard shows live leads from the website contact form: stat cards (total, needs-action, open pipeline £, won £), a pipeline bar, status filters, search, and an editable lead drawer (status / quote value / internal notes).
+- **Enquiries** — CRM for website leads (pipeline, statuses, notes, values).
+- **Content** — edit business details, hero, about, stats and services text + images (uploads go to Supabase Storage). Saved changes are live immediately.
+- **Portfolio** — manage projects: reorder, feature, show/hide, edit title/category/caption/tags, upload media, add or delete projects.
+
+Public pages read this content at request time (`getContent`/`getProjects`) and fall back to the built-in defaults / `portfolio.json` if the database is unavailable.
+
+The Enquiries dashboard shows live leads from the website contact form: stat cards (total, needs-action, open pipeline £, won £), a pipeline bar, status filters, search, and an editable lead drawer (status / quote value / internal notes).
 
 ## Data layer (Supabase)
 

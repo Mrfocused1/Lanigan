@@ -3,9 +3,10 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { services } from "@/data/site";
+import { useContent } from "./ContentProvider";
 
 export default function ServicesList({ detailed = false }: { detailed?: boolean }) {
+  const { services } = useContent();
   const ref = useRef<HTMLDivElement>(null);
   const followRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<string | null>(detailed ? services[0].slug : null);

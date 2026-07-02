@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import ContactForm from "@/components/ContactForm";
-import { site } from "@/data/site";
+import { getContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get a quote from Lanigan Builds — London builder for roofing, kitchens, bathrooms and renovations.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const { settings: site } = await getContent();
   return (
     <>
       <PageIntro eyebrow="Contact" title="Let's start" accent="building.">

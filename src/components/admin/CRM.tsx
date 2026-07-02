@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import type { Session } from "@supabase/supabase-js";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { supabase, type Lead, type LeadStatus } from "@/lib/supabase";
-import BrandLogo from "@/components/BrandLogo";
 import LeadDrawer from "./LeadDrawer";
 
 const STATUSES: { key: LeadStatus; label: string; dot: string; chip: string }[] = [
@@ -21,7 +18,7 @@ export const statusMeta = (s: LeadStatus) => STATUSES.find((x) => x.key === s)!;
 const gbp = (n: number) =>
   new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 }).format(n);
 
-export default function CRM({ session }: { session: Session }) {
+export default function CRM() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<LeadStatus | "all">("all");
@@ -104,32 +101,11 @@ export default function CRM({ session }: { session: Session }) {
   ];
 
   return (
-    <div className="min-h-screen bg-paper">
-      {/* Top bar */}
-      <header className="sticky top-0 z-30 border-b border-line bg-paper/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8">
-          <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto text-brand" />
-            <div className="border-l border-line pl-3 leading-none">
-              <div className="font-display text-sm font-semibold text-ink">Lanigan CRM</div>
-              <div className="text-[11px] text-faint">{session.user.email}</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link href="/" className="btn btn-ghost !py-2.5 !text-xs">
-              View site ↗
-            </Link>
-            <button onClick={() => supabase.auth.signOut()} className="btn btn-primary !py-2.5 !text-xs">
-              Sign out
-            </button>
-          </div>
-        </div>
-      </header>
-
+    <div>
       <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
         <div className="flex items-end justify-between">
           <div>
-            <p className="eyebrow">Dashboard</p>
+            <p className="eyebrow">Enquiries</p>
             <h1 className="font-display mt-2 text-3xl font-semibold text-ink md:text-4xl">Leads</h1>
           </div>
           <button onClick={load} className="btn btn-ghost !py-2.5 !text-xs">

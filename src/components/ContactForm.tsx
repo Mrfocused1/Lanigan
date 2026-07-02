@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { services } from "@/data/site";
+import { useContent } from "./ContentProvider";
 
 const budgets = ["Under £5k", "£5k–£10k", "£10k–£20k", "£20k+", "Not sure yet"];
 
@@ -22,6 +22,7 @@ function Chevron() {
 }
 
 export default function ContactForm() {
+  const { services } = useContent();
   const ref = useRef<HTMLFormElement>(null);
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");

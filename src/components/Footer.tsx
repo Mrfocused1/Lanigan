@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import { site, nav, services } from "@/data/site";
+import { nav } from "@/data/site";
+import { useContent } from "./ContentProvider";
 import MaskText from "./MaskText";
 import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
+  const { settings, services } = useContent();
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-10 md:py-28">
@@ -21,8 +25,8 @@ export default function Footer() {
             >
               Get a quote →
             </Link>
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="btn btn-ghost !border-white/25 !text-paper">
-              {site.phone}
+            <a href={`tel:${settings.phone.replace(/\s/g, "")}`} className="btn btn-ghost !border-white/25 !text-paper">
+              {settings.phone}
             </a>
           </div>
         </div>
@@ -61,19 +65,19 @@ export default function Footer() {
             <p className="eyebrow !text-faint">Contact</p>
             <ul className="mt-5 space-y-3 text-sm text-paper/90">
               <li>
-                <a href={`mailto:${site.email}`} className="link-sweep">
-                  {site.email}
+                <a href={`mailto:${settings.email}`} className="link-sweep">
+                  {settings.email}
                 </a>
               </li>
               <li>
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="link-sweep">
-                  {site.phone}
+                <a href={`tel:${settings.phone.replace(/\s/g, "")}`} className="link-sweep">
+                  {settings.phone}
                 </a>
               </li>
-              <li>{site.serviceArea}</li>
+              <li>{settings.serviceArea}</li>
               <li>
-                <a href={site.instagram} target="_blank" rel="noreferrer" className="link-sweep text-lime">
-                  {site.instagramHandle}
+                <a href={settings.instagram} target="_blank" rel="noreferrer" className="link-sweep text-lime">
+                  {settings.instagramHandle}
                 </a>
               </li>
             </ul>
@@ -82,7 +86,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-faint md:flex-row md:items-center">
-          <span>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {settings.legalName}. All rights reserved.</span>
           <span className="flex items-center gap-6">
             <Link href="/admin" className="link-sweep">
               Admin

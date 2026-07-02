@@ -4,7 +4,8 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { nav, site } from "@/data/site";
+import { nav } from "@/data/site";
+import { useContent } from "./ContentProvider";
 import Logo from "./Logo";
 
 const menuImages: Record<string, string> = {
@@ -22,6 +23,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuHover, setMenuHover] = useState<string | null>(null);
   const pathname = usePathname();
+  const { settings } = useContent();
 
   useGSAP(
     () => {
@@ -185,25 +187,25 @@ export default function Header() {
         <div className="m-meta grid gap-6 border-t border-white/10 pt-8 text-sm sm:grid-cols-3">
           <div>
             <div className="eyebrow !text-faint">Call</div>
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="link-sweep mt-1 block text-base text-paper">
-              {site.phone}
+            <a href={`tel:${settings.phone.replace(/\s/g, "")}`} className="link-sweep mt-1 block text-base text-paper">
+              {settings.phone}
             </a>
           </div>
           <div>
             <div className="eyebrow !text-faint">Email</div>
-            <a href={`mailto:${site.email}`} className="link-sweep mt-1 block text-base text-paper">
-              {site.email}
+            <a href={`mailto:${settings.email}`} className="link-sweep mt-1 block text-base text-paper">
+              {settings.email}
             </a>
           </div>
           <div>
             <div className="eyebrow !text-faint">Follow</div>
             <a
-              href={site.instagram}
+              href={settings.instagram}
               target="_blank"
               rel="noreferrer"
               className="link-sweep mt-1 block text-base text-lime"
             >
-              {site.instagramHandle}
+              {settings.instagramHandle}
             </a>
           </div>
         </div>

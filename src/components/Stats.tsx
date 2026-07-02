@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { stats } from "@/data/site";
+import { useContent } from "./ContentProvider";
 
 function parse(value: string) {
   const num = parseInt(value.replace(/\D/g, ""), 10) || 0;
@@ -12,6 +12,7 @@ function parse(value: string) {
 }
 
 export default function Stats() {
+  const { stats } = useContent();
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
