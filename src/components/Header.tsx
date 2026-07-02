@@ -25,6 +25,9 @@ export default function Header() {
   const pathname = usePathname();
   const { settings } = useContent();
 
+  // The homepage hero is a dark full-bleed image — use light header styling over it.
+  const lightHeader = open || (pathname === "/" && !scrolled);
+
   useGSAP(
     () => {
       gsap.from(headerRef.current, { y: -80, autoAlpha: 0, duration: 1, ease: "power3.out", delay: 0.1 });
@@ -92,7 +95,7 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10">
-          <span className={open ? "text-paper [&_*]:!text-paper" : ""}>
+          <span className={lightHeader ? "text-paper [&_*]:!text-paper" : ""}>
             <Logo />
           </span>
 
@@ -100,14 +103,14 @@ export default function Header() {
             <Link
               href="/contact"
               className={`btn hidden sm:inline-flex ${
-                open ? "bg-paper text-ink hover:bg-lime" : "btn-primary"
+                lightHeader ? "bg-paper text-ink hover:bg-lime" : "btn-primary"
               }`}
             >
               Get a quote
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
-              className={`group flex items-center gap-3 ${open ? "text-paper" : "text-ink"}`}
+              className={`group flex items-center gap-3 ${lightHeader ? "text-paper" : "text-ink"}`}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
