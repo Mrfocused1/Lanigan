@@ -78,14 +78,14 @@ export default function Hero() {
 
         {/* Image — sits between copy and details on mobile, tall on the right for desktop */}
         <div ref={imgWrap} className="relative -mx-5 sm:mx-0 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-          <div className="relative aspect-square w-full overflow-hidden bg-paper-2 sm:aspect-[4/5] sm:rounded-[8px] lg:aspect-auto lg:h-full">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper-2 sm:rounded-[8px] lg:aspect-auto lg:h-full">
             <Image
               src={hero.image}
               alt="Lanigan Builds on site in London"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 45vw"
-              className="hero-img object-cover object-[center_72%] lg:object-center"
+              className="hero-img object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
           </div>
