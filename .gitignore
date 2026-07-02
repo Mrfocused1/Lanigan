@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# publishable NEXT_PUBLIC keys are safe to commit (they ship in the client bundle)
+!.env.production
 
 # vercel
 .vercel
