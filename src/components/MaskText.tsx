@@ -60,7 +60,7 @@ export default function MaskText({
         <Fragment key={i}>
           <span
             aria-hidden
-            style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top" }}
+            style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top", paddingBottom: "0.12em" }}
           >
             <span className="mask-inner" style={{ display: "inline-block", willChange: "transform" }}>
               {w}

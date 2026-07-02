@@ -39,7 +39,7 @@ export default function Hero({ image }: { image: string }) {
   );
 
   const Line = ({ children }: { children: string }) => (
-    <span className="hero-line block overflow-hidden">
+    <span className="hero-line block overflow-hidden pb-[0.14em]">
       <span className="mask-inner block" style={{ willChange: "transform" }}>
         {children}
       </span>
@@ -48,13 +48,13 @@ export default function Hero({ image }: { image: string }) {
 
   return (
     <section ref={root} className="relative overflow-hidden px-5 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40">
-      <div className="mx-auto grid max-w-[1600px] items-end gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        {/* Left: copy */}
-        <div>
+      <div className="mx-auto grid max-w-[1600px] gap-8 md:gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Copy */}
+        <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
           <h1 className="h-hero font-display text-ink">
             <Line>Real</Line>
             <Line>projects.</Line>
-            <span className="hero-line block overflow-hidden">
+            <span className="hero-line block overflow-hidden pb-[0.14em]">
               <span className="mask-inner block text-brand" style={{ willChange: "transform" }}>
                 Real work.
               </span>
@@ -74,21 +74,11 @@ export default function Hero({ image }: { image: string }) {
               View the work
             </Link>
           </div>
-
-          <div className="hero-fade mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-sm text-muted">
-            <span>
-              <strong className="text-ink">{site.serviceArea}</strong>
-            </span>
-            <span>
-              Roofing · Carpentry · <span className="text-ink">On-site builds</span>
-            </span>
-            <span>{site.hours}</span>
-          </div>
         </div>
 
-        {/* Right: image */}
-        <div ref={imgWrap} className="relative">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2">
+        {/* Image — sits between copy and details on mobile, tall on the right for desktop */}
+        <div ref={imgWrap} className="relative lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2 lg:h-full">
             <Image
               src={image}
               alt="Lanigan Builds on site in London"
@@ -99,6 +89,17 @@ export default function Hero({ image }: { image: string }) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
           </div>
+        </div>
+
+        {/* Details */}
+        <div className="hero-fade flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-sm text-muted lg:col-start-1 lg:row-start-2">
+          <span>
+            <strong className="text-ink">{site.serviceArea}</strong>
+          </span>
+          <span>
+            Roofing · Carpentry · <span className="text-ink">On-site builds</span>
+          </span>
+          <span>{site.hours}</span>
         </div>
       </div>
     </section>

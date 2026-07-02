@@ -84,7 +84,6 @@ export default function WorkGallery({
         className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
       >
         {filtered.map((p) => {
-          const isVideoCover = p.media[0]?.type === "video" && p.media.length === 1;
           return (
             <button
               key={p.shortcode}
@@ -100,23 +99,6 @@ export default function WorkGallery({
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/5 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
-
-                {/* badges */}
-                <div className="absolute left-3 top-3 flex gap-2">
-                  <span className="rounded-full bg-paper/90 px-3 py-1 text-[11px] font-medium text-ink">
-                    {p.category}
-                  </span>
-                  {(isVideoCover || p.media.some((m) => m.type === "video")) && (
-                    <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-[10px] text-white">
-                      ▶
-                    </span>
-                  )}
-                  {p.media.length > 1 && (
-                    <span className="rounded-full bg-paper/90 px-2 py-1 text-[11px] font-medium text-ink">
-                      {p.media.length}
-                    </span>
-                  )}
-                </div>
 
                 {/* title */}
                 <div className="absolute inset-x-0 bottom-0 p-4">

@@ -7,11 +7,20 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { nav, site } from "@/data/site";
 import Logo from "./Logo";
 
+const menuImages: Record<string, string> = {
+  "/": "/media/C8aLy3VILak_slide1.jpg",
+  "/portfolio": "/media/DVy6lxRDcmf_thumb.jpg",
+  "/services": "/media/C0ecESxouna_slide1.jpg",
+  "/#about": "/media/Crsn4JxIJRK_slide1.jpg",
+  "/contact": "/media/Ck1TTq7oBWK_slide1.jpg",
+};
+
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [menuHover, setMenuHover] = useState<string | null>(null);
   const pathname = usePathname();
 
   useGSAP(
@@ -31,6 +40,10 @@ export default function Header() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!open) setMenuHover(null);
+  }, [open]);
 
   // Full-screen overlay menu — same dynamic animation on desktop and mobile
   useGSAP(
@@ -123,11 +136,23 @@ export default function Header() {
         style={{ display: "none" }}
         className="fixed inset-0 z-40 hidden flex-col justify-between bg-ink px-5 pb-10 pt-28 text-paper md:px-10 md:pb-14 md:pt-32"
       >
-        <nav className="flex flex-col">
+        <nav
+          className="flex flex-col"
+          onMouseLeave={() => setMenuHover(null)}
+        >
           {nav.map((n, i) => (
-            <Link key={n.href} href={n.href} className="m-link group block w-fit">
+            <Link
+              key={n.href}
+              href={n.href}
+              className="m-link group block w-fit"
+              onMouseEnter={() => setMenuHover(n.href)}
+            >
               <span className="block overflow-hidden">
-                <span className="inner font-display flex items-baseline gap-4 text-[15vw] font-semibold leading-[1.05] tracking-tight transition-colors duration-300 group-hover:text-lime md:text-[7vw] md:leading-[1.02]">
+                <span
+                  className={`inner font-display flex items-baseline gap-4 text-[15vw] font-semibold leading-[1.05] tracking-tight transition-colors duration-300 md:text-[7vw] md:leading-[1.02] ${
+                    menuHover && menuHover !== n.href ? "lg:text-white/25" : ""
+                  } group-hover:text-lime`}
+                >
                   <span className="text-[0.28em] font-medium text-faint">0{i + 1}</span>
                   {n.label}
                 </span>
@@ -135,6 +160,27 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+
+        {/* Hover image preview (desktop) */}
+        <div
+          className={`pointer-events-none absolute right-[6%] top-1/2 hidden aspect-[3/4] w-[24vw] max-w-[360px] -translate-y-1/2 overflow-hidden rounded-[10px] shadow-2xl transition-all duration-500 ease-out lg:block ${
+            menuHover ? "opacity-100 scale-100" : "scale-95 opacity-0"
+          }`}
+          aria-hidden="true"
+        >
+          {nav.map((n) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={n.href}
+              src={menuImages[n.href] || menuImages["/"]}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                menuHover === n.href ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+        </div>
 
         <div className="m-meta grid gap-6 border-t border-white/10 pt-8 text-sm sm:grid-cols-3">
           <div>
