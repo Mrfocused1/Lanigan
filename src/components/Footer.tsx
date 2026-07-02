@@ -1,0 +1,96 @@
+import Link from "next/link";
+import { site, nav, services } from "@/data/site";
+import MaskText from "./MaskText";
+import BrandLogo from "./BrandLogo";
+
+export default function Footer() {
+  return (
+    <footer className="bg-ink text-paper">
+      <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-10 md:py-28">
+        {/* CTA */}
+        <div className="border-b border-white/10 pb-16">
+          <p className="eyebrow !text-lime">Start your project</p>
+          <h2 className="font-display mt-5 text-[clamp(2.4rem,7vw,6.5rem)] font-semibold leading-[0.95]">
+            <MaskText text="Let's build" /> <br />
+            <span className="text-faint"><MaskText text="something solid." delay={0.15} /></span>
+          </h2>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link
+              href="/contact"
+              className="btn bg-paper text-ink hover:bg-lime hover:text-ink"
+            >
+              Get a quote →
+            </Link>
+            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="btn btn-ghost !border-white/25 !text-paper">
+              {site.phone}
+            </a>
+          </div>
+        </div>
+
+        {/* Columns */}
+        <div className="py-16">
+          <BrandLogo className="h-16 w-auto text-paper" />
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3">
+          <div>
+            <p className="eyebrow !text-faint">Menu</p>
+            <ul className="mt-5 space-y-3">
+              {nav.map((n) => (
+                <li key={n.href}>
+                  <Link href={n.href} className="link-sweep text-sm text-paper/90 hover:text-paper">
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow !text-faint">Services</p>
+            <ul className="mt-5 space-y-3">
+              {services.slice(0, 6).map((s) => (
+                <li key={s.slug}>
+                  <Link href="/services" className="link-sweep text-sm text-paper/90 hover:text-paper">
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow !text-faint">Contact</p>
+            <ul className="mt-5 space-y-3 text-sm text-paper/90">
+              <li>
+                <a href={`mailto:${site.email}`} className="link-sweep">
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="link-sweep">
+                  {site.phone}
+                </a>
+              </li>
+              <li>{site.serviceArea}</li>
+              <li>
+                <a href={site.instagram} target="_blank" rel="noreferrer" className="link-sweep text-lime">
+                  {site.instagramHandle}
+                </a>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-faint md:flex-row md:items-center">
+          <span>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</span>
+          <span className="flex items-center gap-6">
+            <Link href="/admin" className="link-sweep">
+              Admin
+            </Link>
+            <span>Built in London.</span>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}
