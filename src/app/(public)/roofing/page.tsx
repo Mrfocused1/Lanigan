@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
 import WorkGallery from "@/components/WorkGallery";
-import { getProjects } from "@/lib/content";
+import { getContent, getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Roofing",
@@ -11,33 +11,19 @@ export const metadata: Metadata = {
     "Roof repairs, new roofs, slate and tile roofing, leadwork, chimneys, fascias, soffits, guttering and emergency roofing across North London.",
 };
 
-const roofingServices = [
-  "Roof Repairs",
-  "New Roofs",
-  "Slate Roofing",
-  "Tile Roofing",
-  "Leadwork",
-  "Emergency Roofing",
-  "Ridge Repairs",
-  "Chimney Repairs",
-  "Guttering",
-  "Flat Roofing",
-];
-
 export default async function RoofingPage() {
-  const projects = await getProjects();
+  const [{ roofingPage }, projects] = await Promise.all([getContent(), getProjects()]);
   const roofingProjects = projects.filter((p) => p.category === "Roofing");
 
   return (
     <>
-      <PageIntro eyebrow="Roofing" title="North London" accent="roofing specialists.">
-        From a single slipped slate to a full re-roof, we cover every part of the job — repairs, new
-        roofs, leadwork and everything that keeps a roof watertight for the long term.
+      <PageIntro eyebrow="Roofing" title={roofingPage.heading} accent={roofingPage.accent}>
+        {roofingPage.intro}
       </PageIntro>
 
       <section className="mx-auto max-w-[1600px] px-5 pb-24 md:px-10">
         <Reveal as="ul" stagger={0.05} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {roofingServices.map((s) => (
+          {roofingPage.services.map((s) => (
             <li
               key={s}
               className="rounded-[6px] border border-line bg-card px-4 py-5 text-center text-sm font-semibold text-ink"

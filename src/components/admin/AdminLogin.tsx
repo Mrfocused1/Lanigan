@@ -93,6 +93,28 @@ export default function AdminLogin() {
             {loading ? "Signing in…" : "Sign in →"}
           </button>
 
+          <div className="anim mt-6 rounded-[6px] border border-dashed border-brand/40 bg-brand/5 p-4 text-sm">
+            <p className="font-semibold text-ink">Temporary test login</p>
+            <p className="mt-1 text-muted">
+              Email: <span className="font-mono text-ink">admin@laniganbuilds.co.uk</span>
+              <br />
+              Password: <span className="font-mono text-ink">4HLNryf6uxWKAa1!</span>
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setEmail("admin@laniganbuilds.co.uk");
+                setPassword("4HLNryf6uxWKAa1!");
+              }}
+              className="mt-2 rounded-full border border-line-strong px-3 py-1 text-xs text-ink hover:border-ink"
+            >
+              Fill in test login
+            </button>
+            <p className="mt-2 text-xs text-faint">
+              Remove this box (and change the password) before sharing this link publicly.
+            </p>
+          </div>
+
           <Link href="/" className="anim link-sweep mt-6 inline-block text-sm text-muted">
             ← Back to site
           </Link>

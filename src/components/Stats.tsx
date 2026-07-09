@@ -67,7 +67,7 @@ export default function Stats() {
             className="stat group relative bg-card p-7 transition-colors duration-300 hover:bg-paper-2/60 md:p-9"
           >
             <div className="stat-bar mb-6 h-[3px] w-9 rounded-full bg-brand transition-all duration-300 group-hover:w-14" />
-            <div className="font-display flex items-end text-4xl font-semibold leading-none text-ink md:text-5xl">
+            <div className="font-display flex flex-wrap items-end text-4xl font-semibold leading-none text-ink md:text-5xl">
               {hasDigits ? (
                 <>
                   <span>{prefix}</span>
@@ -77,7 +77,7 @@ export default function Stats() {
                   <span className="text-brand">{suffix}</span>
                 </>
               ) : (
-                <span className="text-brand">{s.value}</span>
+                <span className="break-words text-2xl text-brand md:text-4xl">{s.value}</span>
               )}
             </div>
             <div className="mt-4 text-xs uppercase tracking-[0.14em] text-muted">{s.label}</div>

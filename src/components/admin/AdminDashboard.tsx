@@ -8,12 +8,14 @@ import BrandLogo from "@/components/BrandLogo";
 import CRM from "./CRM";
 import ContentEditor from "./ContentEditor";
 import PortfolioManager from "./PortfolioManager";
+import MediaLibrary from "./MediaLibrary";
 
-type Tab = "enquiries" | "content" | "portfolio";
+type Tab = "enquiries" | "content" | "portfolio" | "media";
 const TABS: { key: Tab; label: string }[] = [
   { key: "enquiries", label: "Enquiries" },
   { key: "content", label: "Content" },
   { key: "portfolio", label: "Portfolio" },
+  { key: "media", label: "Media library" },
 ];
 
 export default function AdminDashboard({ session }: { session: Session }) {
@@ -65,6 +67,11 @@ export default function AdminDashboard({ session }: { session: Session }) {
       {tab === "portfolio" && (
         <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
           <PortfolioManager />
+        </div>
+      )}
+      {tab === "media" && (
+        <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
+          <MediaLibrary />
         </div>
       )}
     </div>

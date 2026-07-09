@@ -17,7 +17,7 @@ import { getContent, getProjects } from "@/lib/content";
 
 export default async function Home() {
   const [content, projects] = await Promise.all([getContent(), getProjects()]);
-  const { about, settings } = content;
+  const { about, settings, whyChooseUs, guarantee, beforeAfter, testimonials } = content;
   return (
     <>
       <Hero />
@@ -90,7 +90,7 @@ export default async function Home() {
         <div className="mb-12 max-w-xl">
           <p className="eyebrow">Why choose us</p>
           <h2 className="h-section font-display mt-5 text-ink">
-            <MaskText text="Why choose" /> <span className="text-brand"><MaskText text="Lanigan Builds?" delay={0.08} /></span>
+            <MaskText text={whyChooseUs.heading} /> <span className="text-brand"><MaskText text={whyChooseUs.accent} delay={0.08} /></span>
           </h2>
         </div>
         <WhyChooseUs />
@@ -102,12 +102,9 @@ export default async function Home() {
           <div className="max-w-2xl">
             <p className="eyebrow">Our promise</p>
             <h2 className="h-section font-display mt-5 text-ink">
-              <MaskText text="Our workmanship" /> <span className="text-brand"><MaskText text="guarantee." delay={0.08} /></span>
+              <MaskText text={guarantee.heading} /> <span className="text-brand"><MaskText text={guarantee.accent} delay={0.08} /></span>
             </h2>
-            <p className="mt-7 text-lg leading-relaxed text-muted">
-              We stand behind every project we complete. If something isn&apos;t right because of our
-              workmanship, we&apos;ll come back and put it right.
-            </p>
+            <p className="mt-7 text-lg leading-relaxed text-muted">{guarantee.body}</p>
           </div>
         </div>
       </section>
@@ -117,20 +114,13 @@ export default async function Home() {
         <div className="mb-12 max-w-xl">
           <p className="eyebrow">Before &amp; after</p>
           <h2 className="h-section font-display mt-5 text-ink">
-            <MaskText text="Drag to see" /> <span className="text-brand"><MaskText text="the difference." delay={0.08} /></span>
+            <MaskText text={beforeAfter.heading} /> <span className="text-brand"><MaskText text={beforeAfter.accent} delay={0.08} /></span>
           </h2>
         </div>
         <div className="grid gap-10 md:grid-cols-2">
-          <BeforeAfterSlider
-            before="/media/before-after-roof-before.jpg"
-            after="/media/before-after-roof-after.jpg"
-            label="Slate roof re-cover"
-          />
-          <BeforeAfterSlider
-            before="/media/before-after-kitchen-before.jpg"
-            after="/media/before-after-kitchen-after.jpg"
-            label="Kitchen floor transformation"
-          />
+          {beforeAfter.items.map((item, i) => (
+            <BeforeAfterSlider key={i} before={item.before} after={item.after} label={item.label} />
+          ))}
         </div>
       </section>
 
@@ -164,7 +154,7 @@ export default async function Home() {
         <div className="mb-12 max-w-xl">
           <p className="eyebrow">Reviews</p>
           <h2 className="h-section font-display mt-5 text-ink">
-            <MaskText text="What customers" /> <span className="text-brand"><MaskText text="say." delay={0.08} /></span>
+            <MaskText text={testimonials.heading} /> <span className="text-brand"><MaskText text={testimonials.accent} delay={0.08} /></span>
           </h2>
         </div>
         <Testimonials />
@@ -205,7 +195,7 @@ export default async function Home() {
               </div>
               <div>
                 <div className="eyebrow">Email</div>
-                <a href={`mailto:${settings.email}`} className="link-sweep mt-1 block text-lg text-ink">
+                <a href={`mailto:${settings.email}`} className="link-sweep mt-1 block break-all text-lg text-ink">
                   {settings.email}
                 </a>
               </div>

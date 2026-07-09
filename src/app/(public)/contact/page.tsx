@@ -29,7 +29,7 @@ export default async function ContactPage() {
               </div>
               <div>
                 <div className="eyebrow">Email</div>
-                <a href={`mailto:${site.email}`} className="link-sweep mt-1 block text-xl text-ink">
+                <a href={`mailto:${site.email}`} className="link-sweep mt-1 block break-all text-xl text-ink">
                   {site.email}
                 </a>
               </div>

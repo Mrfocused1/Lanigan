@@ -67,10 +67,10 @@ export default function Hero() {
 
         <div className="hero-fade mt-8 flex flex-wrap items-center gap-4">
           <Link href="/contact" className="btn bg-paper text-ink hover:bg-lime">
-            Get a free quote →
+            {hero.ctaLabel}
           </Link>
           <Link href="/#about" className="btn btn-ghost !border-white/35 !text-paper hover:!border-white">
-            About us
+            {hero.ctaSecondaryLabel}
           </Link>
         </div>
 

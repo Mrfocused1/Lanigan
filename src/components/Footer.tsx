@@ -7,18 +7,18 @@ import MaskText from "./MaskText";
 import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
-  const { settings, services } = useContent();
+  const { settings, services, cta, footer } = useContent();
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-10 md:py-28">
         {/* CTA */}
         <div className="border-b border-white/10 pb-16">
-          <p className="eyebrow !text-lime">Ready to get started?</p>
+          <p className="eyebrow !text-lime">{cta.eyebrow}</p>
           <h2 className="font-display mt-5 text-[clamp(2.4rem,7vw,6.5rem)] font-semibold leading-[0.95]">
-            <MaskText text="Call us today for" /> <br />
-            <span className="text-faint"><MaskText text="a free quotation." delay={0.15} /></span>
+            <MaskText text={cta.heading} /> <br />
+            <span className="text-faint"><MaskText text={cta.accent} delay={0.15} /></span>
           </h2>
-          <p className="mt-6 max-w-md text-paper/80">No obligation. Fast response.</p>
+          <p className="mt-6 max-w-md text-paper/80">{cta.body}</p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
@@ -70,10 +70,9 @@ export default function Footer() {
           <div>
             <p className="eyebrow !text-faint">Areas covered</p>
             <ul className="mt-5 space-y-3 text-sm text-paper/90">
-              <li>Haringey</li>
-              <li>Enfield</li>
-              <li>Barnet</li>
-              <li>Islington</li>
+              {footer.areas.map((a) => (
+                <li key={a}>{a}</li>
+              ))}
               <li>
                 <Link href="/areas" className="link-sweep text-lime">
                   See all areas →
@@ -86,7 +85,7 @@ export default function Footer() {
             <p className="eyebrow !text-faint">Contact</p>
             <ul className="mt-5 space-y-3 text-sm text-paper/90">
               <li>
-                <a href={`mailto:${settings.email}`} className="link-sweep">
+                <a href={`mailto:${settings.email}`} className="link-sweep break-all">
                   {settings.email}
                 </a>
               </li>

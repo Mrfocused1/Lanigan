@@ -1,7 +1,12 @@
+"use client";
+
+import { useContent } from "./ContentProvider";
+
 export default function WhatsAppButton() {
+  const { settings } = useContent();
   return (
     <a
-      href="https://wa.me/447398231786"
+      href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`}
       target="_blank"
       rel="noreferrer"
       aria-label="Message Lanigan Builds on WhatsApp"
