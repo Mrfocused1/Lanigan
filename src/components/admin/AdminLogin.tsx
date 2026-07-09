@@ -48,10 +48,10 @@ export default function AdminLogin() {
         <div>
           <p className="eyebrow !text-lime">Internal</p>
           <h1 className="font-display mt-4 text-5xl font-semibold leading-[0.95]">
-            Lead &amp;<br />Project CRM
+            Site Content<br />Manager
           </h1>
           <p className="mt-6 max-w-sm text-faint">
-            Manage enquiries from the website, track the pipeline and never lose a quote.
+            Edit every page, image and gallery on the site — nothing here needs a code change.
           </p>
         </div>
         <p className="text-xs text-faint">© {new Date().getFullYear()} Lanigan Builds Ltd</p>

@@ -35,8 +35,25 @@ export type SiteContent = {
   footer: { areas: string[] };
   faq: { heading: string; accent: string; intro: string; items: FaqItem[] };
   areasPage: { heading: string; accent: string; intro: string; areas: string[] };
-  roofingPage: { heading: string; accent: string; intro: string; services: string[] };
+  roofingPage: { heading: string; accent: string; intro: string; services: string[]; ctaHeading: string; ctaBody: string };
   privacyPage: { intro: string; sections: { title: string; body: string }[] };
+  servicesPage: { eyebrow: string; title: string; accent: string; intro: string; marquee: string[]; processHeading: string; processAccent: string };
+  portfolioPage: { eyebrow: string; title: string; accent: string; intro: string };
+  contactPage: { eyebrow: string; title: string; accent: string; intro: string };
+  home: {
+    servicesHeading: string;
+    servicesAccent: string;
+    servicesIntro: string;
+    galleryEyebrow: string;
+    galleryHeading: string;
+    galleryAccent: string;
+    processHeading: string;
+    processAccent: string;
+    contactEyebrow: string;
+    contactHeading: string;
+    contactAccent: string;
+    contactIntro: string;
+  };
 };
 
 export const DEFAULT_CONTENT: SiteContent = {
@@ -152,6 +169,8 @@ export const DEFAULT_CONTENT: SiteContent = {
       "Roof Repairs", "New Roofs", "Slate Roofing", "Tile Roofing", "Leadwork",
       "Emergency Roofing", "Ridge Repairs", "Chimney Repairs", "Guttering", "Flat Roofing",
     ],
+    ctaHeading: "Need a roofer you can rely on?",
+    ctaBody: "Fully insured, fixed quotations, no hidden extras.",
   },
   privacyPage: {
     intro: "How we handle the information you share with us.",
@@ -161,6 +180,41 @@ export const DEFAULT_CONTENT: SiteContent = {
       { title: "How long we keep it", body: "We keep enquiry and project details only as long as needed to deliver the work and meet our legal and accounting obligations." },
       { title: "Contact us", body: "If you have any questions about how your data is handled, or want it removed, email us at lanigansconstruction@gmail.com." },
     ],
+  },
+  servicesPage: {
+    eyebrow: "Services",
+    title: "What we",
+    accent: "build.",
+    intro: "Six core trades under one roof. Whether it's a single roof repair or a whole-property refurbishment, we keep your project joined-up, tidy and finished to a standard.",
+    marquee: ["Built tidy", "Quoted honestly", "Finished properly", "London based"],
+    processHeading: "A clear, four-step",
+    processAccent: "process.",
+  },
+  portfolioPage: {
+    eyebrow: "The work",
+    title: "Real",
+    accent: "projects.",
+    intro: "Straight from site. Photos and videos of work delivered across London — tap any project to see the full set.",
+  },
+  contactPage: {
+    eyebrow: "Contact",
+    title: "Let's start",
+    accent: "building.",
+    intro: "Tell us what you're planning. We'll arrange a visit, talk it through honestly and send a clear, itemised quote.",
+  },
+  home: {
+    servicesHeading: "What we",
+    servicesAccent: "build.",
+    servicesIntro: "Six core trades, delivered under one roof — so your project stays joined-up from first fix to final finish.",
+    galleryEyebrow: "Selected work",
+    galleryHeading: "See it",
+    galleryAccent: "by trade.",
+    processHeading: "From first call",
+    processAccent: "to final fix.",
+    contactEyebrow: "Get in touch",
+    contactHeading: "Tell us about",
+    contactAccent: "the project.",
+    contactIntro: "Drop your details below and we'll get back to arrange a site visit and an honest, itemised quote.",
   },
 };
 
@@ -173,7 +227,7 @@ function readClient() {
 }
 
 /** Deep-merge a stored content doc over the defaults so missing fields fall back. */
-function merge(base: SiteContent, over: Partial<SiteContent> | null | undefined): SiteContent {
+export function merge(base: SiteContent, over: Partial<SiteContent> | null | undefined): SiteContent {
   if (!over) return base;
   return {
     settings: { ...base.settings, ...(over.settings ?? {}) },
@@ -216,6 +270,14 @@ function merge(base: SiteContent, over: Partial<SiteContent> | null | undefined)
       ...(over.privacyPage ?? {}),
       sections: over.privacyPage?.sections?.length ? over.privacyPage.sections : base.privacyPage.sections,
     },
+    servicesPage: {
+      ...base.servicesPage,
+      ...(over.servicesPage ?? {}),
+      marquee: over.servicesPage?.marquee?.length ? over.servicesPage.marquee : base.servicesPage.marquee,
+    },
+    portfolioPage: { ...base.portfolioPage, ...(over.portfolioPage ?? {}) },
+    contactPage: { ...base.contactPage, ...(over.contactPage ?? {}) },
+    home: { ...base.home, ...(over.home ?? {}) },
   };
 }
 

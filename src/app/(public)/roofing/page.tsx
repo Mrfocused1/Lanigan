@@ -45,10 +45,8 @@ export default async function RoofingPage() {
 
       <section className="bg-ink text-paper">
         <div className="mx-auto max-w-[1600px] px-5 py-20 text-center md:px-10 md:py-24">
-          <h2 className="h-section font-display text-paper">Need a roofer you can rely on?</h2>
-          <p className="mx-auto mt-5 max-w-md text-paper/80">
-            Fully insured, fixed quotations, no hidden extras.
-          </p>
+          <h2 className="h-section font-display text-paper">{roofingPage.ctaHeading}</h2>
+          <p className="mx-auto mt-5 max-w-md text-paper/80">{roofingPage.ctaBody}</p>
           <div className="mt-8 flex justify-center">
             <Link href="/contact" className="btn bg-paper text-ink hover:bg-lime">
               Get a free quote →

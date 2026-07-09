@@ -9,12 +9,11 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const { settings: site } = await getContent();
+  const { settings: site, contactPage } = await getContent();
   return (
     <>
-      <PageIntro eyebrow="Contact" title="Let's start" accent="building.">
-        Tell us what you&apos;re planning. We&apos;ll arrange a visit, talk it through honestly and send a
-        clear, itemised quote.
+      <PageIntro eyebrow={contactPage.eyebrow} title={contactPage.title} accent={contactPage.accent}>
+        {contactPage.intro}
       </PageIntro>
 
       <section className="mx-auto max-w-[1600px] px-5 pb-28 md:px-10">

@@ -17,7 +17,7 @@ import { getContent, getProjects } from "@/lib/content";
 
 export default async function Home() {
   const [content, projects] = await Promise.all([getContent(), getProjects()]);
-  const { about, settings, whyChooseUs, guarantee, beforeAfter, testimonials } = content;
+  const { about, settings, whyChooseUs, guarantee, beforeAfter, testimonials, home } = content;
   return (
     <>
       <Hero />
@@ -74,12 +74,9 @@ export default async function Home() {
         <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <h2 className="h-section font-display max-w-xl text-ink">
-              <MaskText text="What we" /> <MaskText text="build." delay={0.08} />
+              <MaskText text={home.servicesHeading} /> <MaskText text={home.servicesAccent} delay={0.08} />
             </h2>
-            <p className="max-w-sm text-muted">
-              Six core trades, delivered under one roof — so your project stays joined-up from first fix
-              to final finish.
-            </p>
+            <p className="max-w-sm text-muted">{home.servicesIntro}</p>
           </div>
           <ServicesList />
         </div>
@@ -128,9 +125,9 @@ export default async function Home() {
       <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="eyebrow">Selected work</p>
+            <p className="eyebrow">{home.galleryEyebrow}</p>
             <h2 className="h-section font-display mt-5 text-ink">
-              <MaskText text="See it" /> <MaskText text="by trade." delay={0.08} />
+              <MaskText text={home.galleryHeading} /> <MaskText text={home.galleryAccent} delay={0.08} />
             </h2>
           </div>
           <Link href="/portfolio" className="btn btn-ghost">
@@ -165,7 +162,7 @@ export default async function Home() {
         <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
           <p className="eyebrow !text-lime">How it works</p>
           <h2 className="h-section font-display mt-5 max-w-2xl text-paper">
-            <MaskText text="From first call" /> <span className="text-faint"><MaskText text="to final fix." delay={0.1} /></span>
+            <MaskText text={home.processHeading} /> <span className="text-faint"><MaskText text={home.processAccent} delay={0.1} /></span>
           </h2>
           <div className="mt-16 [&_.text-ink]:text-paper [&_.text-muted]:text-faint">
             <Process />
@@ -177,14 +174,11 @@ export default async function Home() {
       <section id="contact" className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1fr]">
           <div>
-            <p className="eyebrow">Get in touch</p>
+            <p className="eyebrow">{home.contactEyebrow}</p>
             <h2 className="h-section font-display mt-5 text-ink">
-              <MaskText text="Tell us about" /> <span className="text-brand"><MaskText text="the project." delay={0.1} /></span>
+              <MaskText text={home.contactHeading} /> <span className="text-brand"><MaskText text={home.contactAccent} delay={0.1} /></span>
             </h2>
-            <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">
-              Drop your details below and we&apos;ll get back to arrange a site visit and an honest,
-              itemised quote.
-            </p>
+            <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">{home.contactIntro}</p>
 
             <div className="mt-10 space-y-5 border-t border-line pt-8 text-sm">
               <div>

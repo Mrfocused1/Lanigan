@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { DEFAULT_CONTENT, type SiteContent } from "@/lib/content";
+import { DEFAULT_CONTENT, merge, type SiteContent } from "@/lib/content";
 import ImageField from "./ImageField";
 
 const inputCls =
@@ -78,49 +78,8 @@ export default function ContentEditor() {
       .eq("id", 1)
       .maybeSingle()
       .then(({ data }) => {
-        const stored = (data?.data as Partial<SiteContent>) ?? {};
-        setContent({
-          settings: { ...DEFAULT_CONTENT.settings, ...(stored.settings ?? {}) },
-          hero: { ...DEFAULT_CONTENT.hero, ...(stored.hero ?? {}) },
-          about: { ...DEFAULT_CONTENT.about, ...(stored.about ?? {}) },
-          stats: stored.stats?.length ? stored.stats : DEFAULT_CONTENT.stats,
-          services: stored.services?.length ? stored.services : DEFAULT_CONTENT.services,
-          whyChooseUs: { ...DEFAULT_CONTENT.whyChooseUs, ...(stored.whyChooseUs ?? {}) },
-          guarantee: { ...DEFAULT_CONTENT.guarantee, ...(stored.guarantee ?? {}) },
-          beforeAfter: {
-            ...DEFAULT_CONTENT.beforeAfter,
-            ...(stored.beforeAfter ?? {}),
-            items: stored.beforeAfter?.items?.length ? stored.beforeAfter.items : DEFAULT_CONTENT.beforeAfter.items,
-          },
-          testimonials: {
-            ...DEFAULT_CONTENT.testimonials,
-            ...(stored.testimonials ?? {}),
-            items: stored.testimonials?.items?.length ? stored.testimonials.items : DEFAULT_CONTENT.testimonials.items,
-          },
-          process: stored.process?.length ? stored.process : DEFAULT_CONTENT.process,
-          cta: { ...DEFAULT_CONTENT.cta, ...(stored.cta ?? {}) },
-          footer: { ...DEFAULT_CONTENT.footer, ...(stored.footer ?? {}) },
-          faq: {
-            ...DEFAULT_CONTENT.faq,
-            ...(stored.faq ?? {}),
-            items: stored.faq?.items?.length ? stored.faq.items : DEFAULT_CONTENT.faq.items,
-          },
-          areasPage: {
-            ...DEFAULT_CONTENT.areasPage,
-            ...(stored.areasPage ?? {}),
-            areas: stored.areasPage?.areas?.length ? stored.areasPage.areas : DEFAULT_CONTENT.areasPage.areas,
-          },
-          roofingPage: {
-            ...DEFAULT_CONTENT.roofingPage,
-            ...(stored.roofingPage ?? {}),
-            services: stored.roofingPage?.services?.length ? stored.roofingPage.services : DEFAULT_CONTENT.roofingPage.services,
-          },
-          privacyPage: {
-            ...DEFAULT_CONTENT.privacyPage,
-            ...(stored.privacyPage ?? {}),
-            sections: stored.privacyPage?.sections?.length ? stored.privacyPage.sections : DEFAULT_CONTENT.privacyPage.sections,
-          },
-        });
+        const stored = (data?.data as Partial<SiteContent>) ?? null;
+        setContent(merge(DEFAULT_CONTENT, stored));
       });
   }, []);
 
@@ -141,17 +100,23 @@ export default function ContentEditor() {
 
   const SECTIONS = [
     { key: "business", label: "Business details" },
-    { key: "hero", label: "Hero" },
-    { key: "about", label: "About" },
-    { key: "stats", label: "Stats" },
-    { key: "services", label: "Services" },
-    { key: "why", label: "Why choose us" },
-    { key: "guarantee", label: "Guarantee" },
-    { key: "beforeafter", label: "Before & after" },
-    { key: "testimonials", label: "Reviews" },
-    { key: "process", label: "How it works" },
-    { key: "cta", label: "Final CTA" },
+    { key: "hero", label: "Hero (home)" },
+    { key: "about", label: "About (home)" },
+    { key: "stats", label: "Stats (home)" },
+    { key: "services", label: "Services (shared)" },
+    { key: "why", label: "Why choose us (home)" },
+    { key: "guarantee", label: "Guarantee (home)" },
+    { key: "beforeafter", label: "Before & after (home)" },
+    { key: "homeGallery", label: "Gallery section (home)" },
+    { key: "testimonials", label: "Reviews (home)" },
+    { key: "homeProcess", label: "Process heading (home)" },
+    { key: "process", label: "How it works (shared)" },
+    { key: "homeContact", label: "Contact section (home)" },
+    { key: "cta", label: "Final CTA (all pages)" },
     { key: "footer", label: "Footer" },
+    { key: "servicesPage", label: "Services page" },
+    { key: "portfolioPage", label: "Portfolio page" },
+    { key: "contactPage", label: "Contact page" },
     { key: "faq", label: "FAQ page" },
     { key: "areas", label: "Areas page" },
     { key: "roofing", label: "Roofing page" },
@@ -426,6 +391,74 @@ export default function ContentEditor() {
           </Card>
         )}
 
+        {section === "homeGallery" && (
+          <Card title="Gallery section" description="The 'See it by trade' section on the homepage.">
+            <Text label="Eyebrow" value={content.home.galleryEyebrow} onChange={(v) => set("home", { ...content.home, galleryEyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Heading" value={content.home.galleryHeading} onChange={(v) => set("home", { ...content.home, galleryHeading: v })} />
+              <Text label="Heading accent" value={content.home.galleryAccent} onChange={(v) => set("home", { ...content.home, galleryAccent: v })} />
+            </div>
+          </Card>
+        )}
+
+        {section === "homeProcess" && (
+          <Card title="Process section heading" description="Heading above the 4-step process on the homepage.">
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Heading" value={content.home.processHeading} onChange={(v) => set("home", { ...content.home, processHeading: v })} />
+              <Text label="Heading accent" value={content.home.processAccent} onChange={(v) => set("home", { ...content.home, processAccent: v })} />
+            </div>
+          </Card>
+        )}
+
+        {section === "homeContact" && (
+          <Card title="Contact section" description="The 'Tell us about the project' section on the homepage.">
+            <Text label="Eyebrow" value={content.home.contactEyebrow} onChange={(v) => set("home", { ...content.home, contactEyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Heading" value={content.home.contactHeading} onChange={(v) => set("home", { ...content.home, contactHeading: v })} />
+              <Text label="Heading accent" value={content.home.contactAccent} onChange={(v) => set("home", { ...content.home, contactAccent: v })} />
+            </div>
+            <Text label="Intro" area value={content.home.contactIntro} onChange={(v) => set("home", { ...content.home, contactIntro: v })} />
+          </Card>
+        )}
+
+        {section === "servicesPage" && (
+          <Card title="Services page" description="/services — the standalone page, separate from the homepage services section.">
+            <Text label="Eyebrow" value={content.servicesPage.eyebrow} onChange={(v) => set("servicesPage", { ...content.servicesPage, eyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Title" value={content.servicesPage.title} onChange={(v) => set("servicesPage", { ...content.servicesPage, title: v })} />
+              <Text label="Title accent" value={content.servicesPage.accent} onChange={(v) => set("servicesPage", { ...content.servicesPage, accent: v })} />
+            </div>
+            <Text label="Intro" area value={content.servicesPage.intro} onChange={(v) => set("servicesPage", { ...content.servicesPage, intro: v })} />
+            <StringListEditor label="Marquee items" items={content.servicesPage.marquee} onChange={(v) => set("servicesPage", { ...content.servicesPage, marquee: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Process heading" value={content.servicesPage.processHeading} onChange={(v) => set("servicesPage", { ...content.servicesPage, processHeading: v })} />
+              <Text label="Process heading accent" value={content.servicesPage.processAccent} onChange={(v) => set("servicesPage", { ...content.servicesPage, processAccent: v })} />
+            </div>
+          </Card>
+        )}
+
+        {section === "portfolioPage" && (
+          <Card title="Portfolio page" description="/portfolio — intro copy above the full project gallery.">
+            <Text label="Eyebrow" value={content.portfolioPage.eyebrow} onChange={(v) => set("portfolioPage", { ...content.portfolioPage, eyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Title" value={content.portfolioPage.title} onChange={(v) => set("portfolioPage", { ...content.portfolioPage, title: v })} />
+              <Text label="Title accent" value={content.portfolioPage.accent} onChange={(v) => set("portfolioPage", { ...content.portfolioPage, accent: v })} />
+            </div>
+            <Text label="Intro" area value={content.portfolioPage.intro} onChange={(v) => set("portfolioPage", { ...content.portfolioPage, intro: v })} />
+          </Card>
+        )}
+
+        {section === "contactPage" && (
+          <Card title="Contact page" description="/contact — intro copy above the contact form.">
+            <Text label="Eyebrow" value={content.contactPage.eyebrow} onChange={(v) => set("contactPage", { ...content.contactPage, eyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Title" value={content.contactPage.title} onChange={(v) => set("contactPage", { ...content.contactPage, title: v })} />
+              <Text label="Title accent" value={content.contactPage.accent} onChange={(v) => set("contactPage", { ...content.contactPage, accent: v })} />
+            </div>
+            <Text label="Intro" area value={content.contactPage.intro} onChange={(v) => set("contactPage", { ...content.contactPage, intro: v })} />
+          </Card>
+        )}
+
         {section === "cta" && (
           <Card title="Final CTA" description="Shown in the footer, on every page.">
             <Text label="Eyebrow" value={content.cta.eyebrow} onChange={(v) => set("cta", { ...content.cta, eyebrow: v })} />
@@ -494,6 +527,8 @@ export default function ContentEditor() {
             </div>
             <Text label="Intro" area value={content.roofingPage.intro} onChange={(v) => set("roofingPage", { ...content.roofingPage, intro: v })} />
             <StringListEditor label="Service chips" items={content.roofingPage.services} onChange={(v) => set("roofingPage", { ...content.roofingPage, services: v })} />
+            <Text label="Bottom CTA heading" value={content.roofingPage.ctaHeading} onChange={(v) => set("roofingPage", { ...content.roofingPage, ctaHeading: v })} />
+            <Text label="Bottom CTA body" value={content.roofingPage.ctaBody} onChange={(v) => set("roofingPage", { ...content.roofingPage, ctaBody: v })} />
           </Card>
         )}
 

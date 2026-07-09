@@ -5,21 +5,19 @@ import Link from "next/link";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import BrandLogo from "@/components/BrandLogo";
-import CRM from "./CRM";
 import ContentEditor from "./ContentEditor";
 import PortfolioManager from "./PortfolioManager";
 import MediaLibrary from "./MediaLibrary";
 
-type Tab = "enquiries" | "content" | "portfolio" | "media";
+type Tab = "content" | "portfolio" | "media";
 const TABS: { key: Tab; label: string }[] = [
-  { key: "enquiries", label: "Enquiries" },
   { key: "content", label: "Content" },
   { key: "portfolio", label: "Portfolio" },
   { key: "media", label: "Media library" },
 ];
 
 export default function AdminDashboard({ session }: { session: Session }) {
-  const [tab, setTab] = useState<Tab>("enquiries");
+  const [tab, setTab] = useState<Tab>("content");
 
   return (
     <div className="min-h-screen bg-paper">
@@ -58,7 +56,6 @@ export default function AdminDashboard({ session }: { session: Session }) {
         </div>
       </header>
 
-      {tab === "enquiries" && <CRM />}
       {tab === "content" && (
         <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
           <ContentEditor />
