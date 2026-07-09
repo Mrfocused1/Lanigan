@@ -92,7 +92,7 @@ export default function ContactForm() {
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="relative">
-          <select name="service" className={select} defaultValue="">
+          <select name="service" aria-label="Service needed" className={select} defaultValue="">
             <option value="" disabled>
               Service needed
             </option>
@@ -106,7 +106,7 @@ export default function ContactForm() {
           <Chevron />
         </div>
         <div className="relative">
-          <select name="budget" className={select} defaultValue="">
+          <select name="budget" aria-label="Approx. budget" className={select} defaultValue="">
             <option value="" disabled>
               Approx. budget
             </option>
@@ -131,7 +131,7 @@ export default function ContactForm() {
       <button type="submit" disabled={state === "loading"} className="btn btn-primary w-full justify-center sm:w-auto">
         {state === "loading" ? "Sending…" : "Send enquiry →"}
       </button>
-      <p className="text-xs text-faint">
+      <p className="text-xs text-muted">
         We&apos;ll only use your details to respond to your enquiry.
       </p>
     </form>

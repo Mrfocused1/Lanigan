@@ -88,7 +88,7 @@ export default function ServicesList({ detailed = false }: { detailed?: boolean 
               onMouseLeave={() => setHovered(null)}
               className="group flex w-full items-center gap-5 py-7 text-left md:gap-10 md:py-9"
             >
-              <span className="font-display w-10 text-sm text-faint">0{i + 1}</span>
+              <span className="font-display w-10 text-sm text-muted">0{i + 1}</span>
               <span className="font-display flex-1 text-2xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-brand md:text-4xl">
                 {s.title}
               </span>
