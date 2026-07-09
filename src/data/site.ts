@@ -6,6 +6,7 @@ export const site = {
   email: "lanigansconstruction@gmail.com",
   instagram: "https://instagram.com/laniganbuilds",
   instagramHandle: "@laniganbuilds",
+  facebook: "https://www.facebook.com/LanigansConstruction/",
   location: "North London",
   serviceArea: "North London & just beyond the M25",
   hours: "Mon–Sat, 7:30am – 6:00pm",
@@ -17,6 +18,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Services", href: "/services" },
+  { label: "Areas", href: "/areas" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -37,7 +39,18 @@ export const services: Service[] = [
     short: "Pitched & flat roofs, zinc, slate and lead.",
     description:
       "Full roof replacements, repairs and weatherproofing. Pitched and flat, slate and tile, zinc capping and leadwork — finished to last.",
-    scope: ["Roof replacements", "Slate & tile", "Zinc & leadwork", "Flat roofs", "Guttering & repairs"],
+    scope: [
+      "Roof Repairs",
+      "New Roofs",
+      "Flat Roofing",
+      "Leadwork",
+      "Chimneys",
+      "Fascias & Soffits",
+      "Guttering",
+      "Emergency Repairs",
+      "Slate Roofing",
+      "Tile Roofing",
+    ],
     image: "/media/DVy6lxRDcmf_thumb.jpg",
   },
   {
@@ -46,7 +59,18 @@ export const services: Service[] = [
     short: "Full kitchen installs, levelled and finished.",
     description:
       "Complete kitchen installations from strip-out to final finish. Units, worktops, tiling and flooring, set out with laser-levelled precision.",
-    scope: ["Full installs", "Units & worktops", "Tiling & splashbacks", "Flooring", "Plumbing & electrics"],
+    scope: [
+      "Full Kitchen Installs",
+      "Bespoke & Fitted Units",
+      "Worktops",
+      "Tiling & Splashbacks",
+      "Kitchen Flooring",
+      "Plumbing & Electrics",
+      "Kitchen Islands",
+      "Appliance Installation",
+      "Lighting",
+      "Kitchen Extensions",
+    ],
     image: "/media/C0ecESxouna_slide2.jpg",
   },
   {
@@ -55,7 +79,18 @@ export const services: Service[] = [
     short: "Wet rooms and full bathroom refits.",
     description:
       "Bathroom and wet-room transformations — first fix to final seal. Tanking, tiling, sanitaryware and lighting, watertight and clean.",
-    scope: ["Full refits", "Wet rooms", "Tanking & tiling", "Sanitaryware", "Lighting"],
+    scope: [
+      "Full Bathroom Refits",
+      "Wet Rooms",
+      "Tanking & Waterproofing",
+      "Tiling",
+      "Sanitaryware",
+      "Showers & Enclosures",
+      "Underfloor Heating",
+      "Lighting",
+      "Plumbing & Electrics",
+      "En-Suites",
+    ],
     image: "/media/DMi3fBRIDul_thumb.jpg",
   },
   {
@@ -88,10 +123,10 @@ export const services: Service[] = [
 ];
 
 export const stats = [
-  { value: "20+", label: "Years on the tools" },
-  { value: "150+", label: "Projects delivered" },
-  { value: "100%", label: "North London based" },
-  { value: "5★", label: "Workmanship" },
+  { value: "20+", label: "Years Experience" },
+  { value: "200+", label: "Projects Completed" },
+  { value: "Fully Insured", label: "Public Liability Cover" },
+  { value: "★★★★★", label: "Rated 5 Stars by Customers" },
 ];
 
 export const processSteps = [

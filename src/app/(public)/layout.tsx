@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollManager from "@/components/ScrollManager";
 import { ContentProvider } from "@/components/ContentProvider";
 import { getContent } from "@/lib/content";
@@ -17,6 +18,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <main>{children}</main>
       <Footer />
       <StickyCTA />
+      <WhatsAppButton />
     </ContentProvider>
   );
 }

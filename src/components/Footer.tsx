@@ -13,11 +13,12 @@ export default function Footer() {
       <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-10 md:py-28">
         {/* CTA */}
         <div className="border-b border-white/10 pb-16">
-          <p className="eyebrow !text-lime">Start your project</p>
+          <p className="eyebrow !text-lime">Ready to get started?</p>
           <h2 className="font-display mt-5 text-[clamp(2.4rem,7vw,6.5rem)] font-semibold leading-[0.95]">
-            <MaskText text="Let's build" /> <br />
-            <span className="text-faint"><MaskText text="something solid." delay={0.15} /></span>
+            <MaskText text="Call us today for" /> <br />
+            <span className="text-faint"><MaskText text="a free quotation." delay={0.15} /></span>
           </h2>
+          <p className="mt-6 max-w-md text-paper/80">No obligation. Fast response.</p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
@@ -34,7 +35,7 @@ export default function Footer() {
         {/* Columns */}
         <div className="py-16">
           <BrandLogo className="h-16 w-auto text-paper" />
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
           <div>
             <p className="eyebrow !text-faint">Menu</p>
             <ul className="mt-5 space-y-3">
@@ -45,6 +46,11 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/faq" className="link-sweep text-sm text-paper/90 hover:text-paper">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -58,6 +64,21 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow !text-faint">Areas covered</p>
+            <ul className="mt-5 space-y-3 text-sm text-paper/90">
+              <li>Haringey</li>
+              <li>Enfield</li>
+              <li>Barnet</li>
+              <li>Islington</li>
+              <li>
+                <Link href="/areas" className="link-sweep text-lime">
+                  See all areas →
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -80,6 +101,11 @@ export default function Footer() {
                   {settings.instagramHandle}
                 </a>
               </li>
+              <li>
+                <a href={settings.facebook} target="_blank" rel="noreferrer" className="link-sweep">
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
           </div>
@@ -88,6 +114,9 @@ export default function Footer() {
         <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-faint md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} {settings.legalName}. All rights reserved.</span>
           <span className="flex items-center gap-6">
+            <Link href="/privacy" className="link-sweep">
+              Privacy Policy
+            </Link>
             <Link href="/admin" className="link-sweep">
               Admin
             </Link>

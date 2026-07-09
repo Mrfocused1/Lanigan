@@ -8,6 +8,7 @@ export type SiteSettings = {
   email: string;
   instagram: string;
   instagramHandle: string;
+  facebook: string;
   location: string;
   serviceArea: string;
   hours: string;
@@ -29,25 +30,27 @@ export const DEFAULT_CONTENT: SiteContent = {
     email: site.email,
     instagram: site.instagram,
     instagramHandle: site.instagramHandle,
+    facebook: site.facebook,
     location: site.location,
     serviceArea: site.serviceArea,
     hours: site.hours,
     legalName: site.legalName,
   },
   hero: {
-    line1: "Real",
-    line2: "projects.",
-    line3: "Real work.",
+    line1: "Trusted roofing",
+    line2: "and building",
+    line3: "specialists.",
     subtext:
-      "A London builder for roofing, kitchens, bathrooms, carpentry and full renovations — delivered tidy, on time and finished properly.",
+      "Covering North London — from roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
     image: "/media/C8aLy3VILak_slide1.jpg",
   },
   about: {
-    heading: "A London builder that",
-    accent: "finishes properly.",
+    heading: "Built on",
+    accent: "recommendations.",
     paragraphs: [
-      "Lanigan Builds is a family-run construction company with over 20 years on the tools, working across North London and just beyond the M25. From a slipped slate to a full property refurbishment, we bring the same standard to every job — clean sites, honest quotes and workmanship you can stand behind.",
-      "No subbed-out chaos, no disappearing acts. Just real trades, doing real work, on real projects.",
+      "Lanigan Builds is a North London building company specialising in roofing, kitchens, bathrooms, carpentry and home renovations.",
+      "With over 20 years of experience on the tools, we believe in turning up when we say we will, keeping sites tidy and delivering work we're proud to put our name on.",
+      "No salesmen. No subcontractor headaches. Just honest workmanship and clear communication from start to finish.",
     ],
     image: "/media/Crsn4JxIJRK_slide1.jpg",
   },

@@ -9,6 +9,9 @@ import WorkGallery from "@/components/WorkGallery";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import MaskText from "@/components/MaskText";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { categories } from "@/lib/portfolio";
 import { getContent, getProjects } from "@/lib/content";
 
@@ -82,6 +85,55 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Why choose us */}
+      <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
+        <div className="mb-12 max-w-xl">
+          <p className="eyebrow">Why choose us</p>
+          <h2 className="h-section font-display mt-5 text-ink">
+            <MaskText text="Why choose" /> <span className="text-brand"><MaskText text="Lanigan Builds?" delay={0.08} /></span>
+          </h2>
+        </div>
+        <WhyChooseUs />
+      </section>
+
+      {/* Guarantee */}
+      <section className="bg-paper-2/60">
+        <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-28">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Our promise</p>
+            <h2 className="h-section font-display mt-5 text-ink">
+              <MaskText text="Our workmanship" /> <span className="text-brand"><MaskText text="guarantee." delay={0.08} /></span>
+            </h2>
+            <p className="mt-7 text-lg leading-relaxed text-muted">
+              We stand behind every project we complete. If something isn&apos;t right because of our
+              workmanship, we&apos;ll come back and put it right.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Before & after */}
+      <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
+        <div className="mb-12 max-w-xl">
+          <p className="eyebrow">Before &amp; after</p>
+          <h2 className="h-section font-display mt-5 text-ink">
+            <MaskText text="Drag to see" /> <span className="text-brand"><MaskText text="the difference." delay={0.08} /></span>
+          </h2>
+        </div>
+        <div className="grid gap-10 md:grid-cols-2">
+          <BeforeAfterSlider
+            before="/media/before-after-roof-before.jpg"
+            after="/media/before-after-roof-after.jpg"
+            label="Slate roof re-cover"
+          />
+          <BeforeAfterSlider
+            before="/media/before-after-kitchen-before.jpg"
+            after="/media/before-after-kitchen-after.jpg"
+            label="Kitchen floor transformation"
+          />
+        </div>
+      </section>
+
       {/* Featured work — tabbed by trade */}
       <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
@@ -105,6 +157,17 @@ export default async function Home() {
           limit={8}
           videosFirst
         />
+      </section>
+
+      {/* Reviews */}
+      <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
+        <div className="mb-12 max-w-xl">
+          <p className="eyebrow">Reviews</p>
+          <h2 className="h-section font-display mt-5 text-ink">
+            <MaskText text="What customers" /> <span className="text-brand"><MaskText text="say." delay={0.08} /></span>
+          </h2>
+        </div>
+        <Testimonials />
       </section>
 
       {/* Process */}

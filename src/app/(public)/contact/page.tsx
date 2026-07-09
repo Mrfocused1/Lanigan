@@ -44,6 +44,17 @@ export default async function ContactPage() {
                   {site.instagramHandle}
                 </a>
               </div>
+              <div>
+                <div className="eyebrow">Facebook</div>
+                <a
+                  href={site.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-sweep mt-1 block text-xl text-ink"
+                >
+                  Lanigans Construction
+                </a>
+              </div>
             </div>
 
             <div className="space-y-5 border-t border-line pt-8 text-sm">
@@ -61,6 +72,18 @@ export default async function ContactPage() {
           <div className="rounded-[8px] border border-line bg-card p-6 md:p-10">
             <ContactForm />
           </div>
+        </div>
+
+        <div className="mt-16 overflow-hidden rounded-[8px] border border-line">
+          <iframe
+            title="Lanigan Builds service area — North London"
+            src="https://www.google.com/maps?q=North+London&output=embed"
+            width="100%"
+            height="420"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </>
