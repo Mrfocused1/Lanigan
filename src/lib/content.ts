@@ -75,7 +75,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     line3: "specialists.",
     subtext:
       "Covering North London — from roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
-    image: "/media/C8aLy3VILak_slide1.jpg",
+    image: "/media/CwatfG-owNu_slide1.jpg",
     ctaLabel: "Get a free quote →",
     ctaSecondaryLabel: "About us",
   },
