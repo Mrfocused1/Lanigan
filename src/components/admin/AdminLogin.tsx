@@ -96,15 +96,15 @@ export default function AdminLogin() {
           <div className="anim mt-6 rounded-[6px] border border-dashed border-brand/40 bg-brand/5 p-4 text-sm">
             <p className="font-semibold text-ink">Temporary test login</p>
             <p className="mt-1 text-muted">
-              Email: <span className="font-mono text-ink">admin@laniganbuilds.co.uk</span>
+              Email: <span className="font-mono text-ink">lanigansconstruction@gmail.com</span>
               <br />
-              Password: <span className="font-mono text-ink">4HLNryf6uxWKAa1!</span>
+              Password: <span className="font-mono text-ink">123456</span>
             </p>
             <button
               type="button"
               onClick={() => {
-                setEmail("admin@laniganbuilds.co.uk");
-                setPassword("4HLNryf6uxWKAa1!");
+                setEmail("lanigansconstruction@gmail.com");
+                setPassword("123456");
               }}
               className="mt-2 rounded-full border border-line-strong px-3 py-1 text-xs text-ink hover:border-ink"
             >

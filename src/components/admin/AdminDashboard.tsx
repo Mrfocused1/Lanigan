@@ -8,12 +8,14 @@ import BrandLogo from "@/components/BrandLogo";
 import ContentEditor from "./ContentEditor";
 import PortfolioManager from "./PortfolioManager";
 import MediaLibrary from "./MediaLibrary";
+import AccountSettings from "./AccountSettings";
 
-type Tab = "content" | "portfolio" | "media";
+type Tab = "content" | "portfolio" | "media" | "account";
 const TABS: { key: Tab; label: string }[] = [
   { key: "content", label: "Content" },
   { key: "portfolio", label: "Portfolio" },
   { key: "media", label: "Media library" },
+  { key: "account", label: "Account" },
 ];
 
 export default function AdminDashboard({ session }: { session: Session }) {
@@ -69,6 +71,11 @@ export default function AdminDashboard({ session }: { session: Session }) {
       {tab === "media" && (
         <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
           <MediaLibrary />
+        </div>
+      )}
+      {tab === "account" && (
+        <div className="mx-auto max-w-[1400px] px-5 py-8 md:px-8">
+          <AccountSettings session={session} />
         </div>
       )}
     </div>
