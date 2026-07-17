@@ -33,10 +33,10 @@ export type SiteContent = {
   process: { no: string; title: string; body: string }[];
   cta: { eyebrow: string; heading: string; accent: string; body: string };
   footer: { areas: string[] };
-  faq: { heading: string; accent: string; intro: string; items: FaqItem[] };
-  areasPage: { heading: string; accent: string; intro: string; areas: string[] };
-  roofingPage: { heading: string; accent: string; intro: string; services: string[]; ctaHeading: string; ctaBody: string };
-  privacyPage: { intro: string; sections: { title: string; body: string }[] };
+  faq: { eyebrow: string; heading: string; accent: string; intro: string; items: FaqItem[] };
+  areasPage: { eyebrow: string; heading: string; accent: string; intro: string; areas: string[] };
+  roofingPage: { eyebrow: string; heading: string; accent: string; intro: string; services: string[]; ctaHeading: string; ctaBody: string };
+  privacyPage: { eyebrow: string; title: string; accent: string; intro: string; sections: { title: string; body: string }[] };
   servicesPage: { eyebrow: string; title: string; accent: string; intro: string; marquee: string[]; processHeading: string; processAccent: string };
   portfolioPage: { eyebrow: string; title: string; accent: string; intro: string };
   contactPage: { eyebrow: string; title: string; accent: string; intro: string };
@@ -138,6 +138,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     areas: ["Haringey", "Enfield", "Barnet", "Islington"],
   },
   faq: {
+    eyebrow: "FAQ",
     heading: "Common",
     accent: "questions.",
     intro: "Everything you need to know before getting in touch. Can't find your answer? Give us a call.",
@@ -153,6 +154,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     ],
   },
   areasPage: {
+    eyebrow: "Areas covered",
     heading: "North London,",
     accent: "and just beyond.",
     intro: "We're based in North London and cover the surrounding boroughs — if you're not sure we reach you, get in touch and we'll let you know.",
@@ -162,6 +164,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     ],
   },
   roofingPage: {
+    eyebrow: "Roofing",
     heading: "North London",
     accent: "roofing specialists.",
     intro: "From a single slipped slate to a full re-roof, we cover every part of the job — repairs, new roofs, leadwork and everything that keeps a roof watertight for the long term.",
@@ -173,6 +176,9 @@ export const DEFAULT_CONTENT: SiteContent = {
     ctaBody: "Fully insured, fixed quotations, no hidden extras.",
   },
   privacyPage: {
+    eyebrow: "Legal",
+    title: "Privacy",
+    accent: "policy.",
     intro: "How we handle the information you share with us.",
     sections: [
       { title: "What we collect", body: "When you contact us through our website — by phone, email, WhatsApp or the contact form — we collect the details you provide, such as your name, phone number, email address and a description of your project." },

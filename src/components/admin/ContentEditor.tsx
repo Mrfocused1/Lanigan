@@ -478,6 +478,7 @@ export default function ContentEditor() {
 
         {section === "faq" && (
           <Card title="FAQ page">
+            <Text label="Eyebrow" value={content.faq.eyebrow} onChange={(v) => set("faq", { ...content.faq, eyebrow: v })} />
             <div className="grid grid-cols-2 gap-4">
               <Text label="Heading" value={content.faq.heading} onChange={(v) => set("faq", { ...content.faq, heading: v })} />
               <Text label="Heading accent" value={content.faq.accent} onChange={(v) => set("faq", { ...content.faq, accent: v })} />
@@ -510,6 +511,7 @@ export default function ContentEditor() {
 
         {section === "areas" && (
           <Card title="Areas covered page">
+            <Text label="Eyebrow" value={content.areasPage.eyebrow} onChange={(v) => set("areasPage", { ...content.areasPage, eyebrow: v })} />
             <div className="grid grid-cols-2 gap-4">
               <Text label="Heading" value={content.areasPage.heading} onChange={(v) => set("areasPage", { ...content.areasPage, heading: v })} />
               <Text label="Heading accent" value={content.areasPage.accent} onChange={(v) => set("areasPage", { ...content.areasPage, accent: v })} />
@@ -521,6 +523,7 @@ export default function ContentEditor() {
 
         {section === "roofing" && (
           <Card title="Roofing page">
+            <Text label="Eyebrow" value={content.roofingPage.eyebrow} onChange={(v) => set("roofingPage", { ...content.roofingPage, eyebrow: v })} />
             <div className="grid grid-cols-2 gap-4">
               <Text label="Heading" value={content.roofingPage.heading} onChange={(v) => set("roofingPage", { ...content.roofingPage, heading: v })} />
               <Text label="Heading accent" value={content.roofingPage.accent} onChange={(v) => set("roofingPage", { ...content.roofingPage, accent: v })} />
@@ -534,6 +537,11 @@ export default function ContentEditor() {
 
         {section === "privacy" && (
           <Card title="Privacy policy page">
+            <Text label="Eyebrow" value={content.privacyPage.eyebrow} onChange={(v) => set("privacyPage", { ...content.privacyPage, eyebrow: v })} />
+            <div className="grid grid-cols-2 gap-4">
+              <Text label="Title" value={content.privacyPage.title} onChange={(v) => set("privacyPage", { ...content.privacyPage, title: v })} />
+              <Text label="Title accent" value={content.privacyPage.accent} onChange={(v) => set("privacyPage", { ...content.privacyPage, accent: v })} />
+            </div>
             <Text label="Intro" area value={content.privacyPage.intro} onChange={(v) => set("privacyPage", { ...content.privacyPage, intro: v })} />
             <div className="space-y-4">
               {content.privacyPage.sections.map((s, i) => (

@@ -15,7 +15,7 @@ export default async function AreasPage() {
 
   return (
     <>
-      <PageIntro eyebrow="Areas covered" title={areasPage.heading} accent={areasPage.accent}>
+      <PageIntro eyebrow={areasPage.eyebrow} title={areasPage.heading} accent={areasPage.accent}>
         {areasPage.intro}
       </PageIntro>
 

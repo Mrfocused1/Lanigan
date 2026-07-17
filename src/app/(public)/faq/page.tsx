@@ -12,7 +12,7 @@ export default async function FaqPage() {
 
   return (
     <>
-      <PageIntro eyebrow="FAQ" title={faq.heading} accent={faq.accent}>
+      <PageIntro eyebrow={faq.eyebrow} title={faq.heading} accent={faq.accent}>
         {faq.intro}
       </PageIntro>
 

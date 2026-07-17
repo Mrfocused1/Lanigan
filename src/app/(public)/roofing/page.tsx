@@ -17,7 +17,7 @@ export default async function RoofingPage() {
 
   return (
     <>
-      <PageIntro eyebrow="Roofing" title={roofingPage.heading} accent={roofingPage.accent}>
+      <PageIntro eyebrow={roofingPage.eyebrow} title={roofingPage.heading} accent={roofingPage.accent}>
         {roofingPage.intro}
       </PageIntro>
 

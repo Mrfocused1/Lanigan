@@ -12,7 +12,7 @@ export default async function PrivacyPage() {
 
   return (
     <>
-      <PageIntro eyebrow="Legal" title="Privacy" accent="policy.">
+      <PageIntro eyebrow={privacyPage.eyebrow} title={privacyPage.title} accent={privacyPage.accent}>
         {privacyPage.intro}
       </PageIntro>
 
