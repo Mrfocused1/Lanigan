@@ -87,7 +87,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       "With over 20 years of experience on the tools, we believe in turning up when we say we will, keeping sites tidy and delivering work we're proud to put our name on.",
       "No salesmen. No subcontractor headaches. Just honest workmanship and clear communication from start to finish.",
     ],
-    image: "/media/Crsn4JxIJRK_slide1.jpg",
+    image: "/media/CiUpWPSIat3_slide1.jpg",
   },
   stats: defaultStats.map((s) => ({ value: s.value, label: s.label })),
   services: defaultServices,
