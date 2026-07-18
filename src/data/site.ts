@@ -8,7 +8,7 @@ export const site = {
   instagramHandle: "@laniganbuilds",
   facebook: "https://www.facebook.com/LanigansConstruction/",
   location: "North London",
-  serviceArea: "North London & just beyond the M25",
+  serviceArea: "North London and surrounding areas",
   hours: "Mon–Sat, 7:30am – 6:00pm",
   blurb:
     "Family-run building & renovations, roofing, carpentry and on-site builds across North London. Real projects, real workmanship.",
