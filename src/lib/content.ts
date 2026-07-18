@@ -75,7 +75,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     line3: "Real work.",
     subtext:
       "Trusted roofing and building specialists covering North London. From roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
-    image: "/media/CwatfG-owNu_slide1.jpg",
+    image: "/media/hero-slate-roof.jpg",
     ctaLabel: "Get a free quote →",
     ctaSecondaryLabel: "About us",
   },
