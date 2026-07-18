@@ -70,9 +70,9 @@ export const DEFAULT_CONTENT: SiteContent = {
     legalName: site.legalName,
   },
   hero: {
-    line1: "Real",
-    line2: "projects.",
-    line3: "Real work.",
+    line1: "Trusted",
+    line2: "roofing &",
+    line3: "building specialist.",
     subtext:
       "Trusted roofing and building specialists covering North London. From roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
     image: "/media/hero-slate-roof.jpg",
