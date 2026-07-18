@@ -70,11 +70,11 @@ export const DEFAULT_CONTENT: SiteContent = {
     legalName: site.legalName,
   },
   hero: {
-    line1: "Trusted roofing",
-    line2: "and building",
-    line3: "specialists.",
+    line1: "Real",
+    line2: "projects.",
+    line3: "Real work.",
     subtext:
-      "Covering North London — from roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
+      "Trusted roofing and building specialists covering North London. From roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
     image: "/media/CwatfG-owNu_slide1.jpg",
     ctaLabel: "Get a free quote →",
     ctaSecondaryLabel: "About us",
