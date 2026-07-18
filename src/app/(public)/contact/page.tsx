@@ -51,7 +51,7 @@ export default async function ContactPage() {
                   rel="noreferrer"
                   className="link-sweep mt-1 block text-xl text-ink"
                 >
-                  Lanigans Construction
+                  Lanigan Builds
                 </a>
               </div>
             </div>

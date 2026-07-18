@@ -1,7 +1,7 @@
 export const site = {
   name: "Lanigan Builds",
   tagline: "London Builder",
-  legalName: "Lanigans Construction",
+  legalName: "Lanigan Builds",
   phone: "07398 231786",
   email: "info@laniganbuilds.co.uk",
   instagram: "https://instagram.com/laniganbuilds",
