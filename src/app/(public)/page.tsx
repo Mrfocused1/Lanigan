@@ -27,48 +27,6 @@ export default async function Home() {
         className="mt-8"
       />
 
-      {/* About / Studio */}
-      <section id="about" className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-36">
-        <div className="grid gap-14 lg:grid-cols-[1fr_0.85fr]">
-          <div>
-            <h2 className="h-section font-display max-w-2xl text-ink">
-              <MaskText text={about.heading} />{" "}
-              <span className="text-brand"><MaskText text={about.accent} delay={0.1} /></span>
-            </h2>
-            <Reveal className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted" y={20}>
-              {about.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </Reveal>
-
-            <Reveal className="mt-10 flex flex-wrap gap-4" y={16}>
-              <Link href="/services" className="btn btn-primary">
-                Our services →
-              </Link>
-              <a href={settings.instagram} target="_blank" rel="noreferrer" className="btn btn-ghost">
-                {settings.instagramHandle}
-              </a>
-            </Reveal>
-          </div>
-
-          <Reveal y={40}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2">
-              <Image
-                src={about.image}
-                alt="Lanigan Builds craftsmanship"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="mt-20">
-          <Stats />
-        </div>
-      </section>
-
       {/* Services */}
       <section className="bg-paper-2/60">
         <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-32">
@@ -203,6 +161,48 @@ export default async function Home() {
           <div className="rounded-[8px] border border-line bg-card p-6 md:p-10">
             <ContactForm />
           </div>
+        </div>
+      </section>
+
+      {/* About / Studio */}
+      <section id="about" className="mx-auto max-w-[1600px] px-5 py-24 md:px-10 md:py-36">
+        <div className="grid gap-14 lg:grid-cols-[1fr_0.85fr]">
+          <div>
+            <h2 className="h-section font-display max-w-2xl text-ink">
+              <MaskText text={about.heading} />{" "}
+              <span className="text-brand"><MaskText text={about.accent} delay={0.1} /></span>
+            </h2>
+            <Reveal className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted" y={20}>
+              {about.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </Reveal>
+
+            <Reveal className="mt-10 flex flex-wrap gap-4" y={16}>
+              <Link href="/services" className="btn btn-primary">
+                Our services →
+              </Link>
+              <a href={settings.instagram} target="_blank" rel="noreferrer" className="btn btn-ghost">
+                {settings.instagramHandle}
+              </a>
+            </Reveal>
+          </div>
+
+          <Reveal y={40}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[6px] bg-paper-2">
+              <Image
+                src={about.image}
+                alt="Lanigan Builds craftsmanship"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-20">
+          <Stats />
         </div>
       </section>
     </>
