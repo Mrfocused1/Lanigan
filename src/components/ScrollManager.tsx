@@ -9,12 +9,17 @@ import { ScrollTrigger } from "@/lib/gsap";
  * page after triggers are created, leaving their start/end positions stale —
  * which can leave scroll-revealed content stuck hidden. Refresh on load,
  * after images settle, and on every route change.
+ *
+ * Uses the "safe" refresh mode — a plain `refresh()` briefly resets scroll to
+ * measure true document flow, then restores it, which reliably clobbers any
+ * in-flight programmatic scroll (e.g. a hash-link's GSAP scrollTo tween) if an
+ * image happens to finish loading mid-animation. `refresh(true)` skips that.
  */
 export default function ScrollManager() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const refresh = () => ScrollTrigger.refresh();
+    const refresh = () => ScrollTrigger.refresh(true);
 
     refresh();
     const timers = [setTimeout(refresh, 300), setTimeout(refresh, 1000), setTimeout(refresh, 2200)];

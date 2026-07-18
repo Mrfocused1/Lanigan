@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { nav } from "@/data/site";
+import { handleHashLinkClick } from "@/lib/hashLink";
 import { useContent } from "./ContentProvider";
 import Logo from "./Logo";
 
@@ -45,6 +46,13 @@ export default function Header() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  // Same-page hash links (e.g. "/#about") don't change `pathname`, so the effect
+  // above never fires and the overlay never closes or scrolls. Handle explicitly.
+  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    setOpen(false);
+    handleHashLinkClick(e, href, pathname, 350);
+  }
 
   useEffect(() => {
     if (!open) setMenuHover(null);
@@ -151,6 +159,7 @@ export default function Header() {
               href={n.href}
               className="m-link group block w-fit"
               onMouseEnter={() => setMenuHover(n.href)}
+              onClick={(e) => handleNavClick(e, n.href)}
             >
               <span className="block overflow-hidden">
                 <span

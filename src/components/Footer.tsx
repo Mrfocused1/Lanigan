@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { nav } from "@/data/site";
+import { handleHashLinkClick } from "@/lib/hashLink";
 import { useContent } from "./ContentProvider";
 import MaskText from "./MaskText";
 import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
+  const pathname = usePathname();
   const { settings, services, cta, footer } = useContent();
   return (
     <footer className="bg-ink text-paper">
@@ -41,7 +44,11 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {nav.map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href} className="link-sweep text-sm text-paper/90 hover:text-paper">
+                  <Link
+                    href={n.href}
+                    onClick={(e) => handleHashLinkClick(e, n.href, pathname)}
+                    className="link-sweep text-sm text-paper/90 hover:text-paper"
+                  >
                     {n.label}
                   </Link>
                 </li>

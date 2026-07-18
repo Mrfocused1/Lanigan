@@ -3,11 +3,14 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { handleHashLinkClick } from "@/lib/hashLink";
 import { useContent } from "./ContentProvider";
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const pathname = usePathname();
   const { hero, settings } = useContent();
 
   useGSAP(
@@ -69,7 +72,11 @@ export default function Hero() {
           <Link href="/contact" className="btn bg-paper text-ink hover:bg-lime">
             {hero.ctaLabel}
           </Link>
-          <Link href="/#about" className="btn btn-ghost !border-white/35 !text-paper hover:!border-white">
+          <Link
+            href="/#about"
+            onClick={(e) => handleHashLinkClick(e, "/#about", pathname)}
+            className="btn btn-ghost !border-white/35 !text-paper hover:!border-white"
+          >
             {hero.ctaSecondaryLabel}
           </Link>
         </div>
