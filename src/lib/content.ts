@@ -200,7 +200,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     eyebrow: "The work",
     title: "Real",
     accent: "projects.",
-    intro: "Straight from site. Photos and videos of work delivered across London — tap any project to see the full set.",
+    intro: "Trusted roofing and building specialists covering North London. From roof repairs and new roofs to kitchens, bathrooms and full home renovations, we deliver quality workmanship that lasts.",
   },
   contactPage: {
     eyebrow: "Contact",
