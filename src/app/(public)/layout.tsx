@@ -6,8 +6,8 @@ import ScrollManager from "@/components/ScrollManager";
 import { ContentProvider } from "@/components/ContentProvider";
 import { getContent } from "@/lib/content";
 
-// Read live CMS content on every request so admin edits show without a redeploy.
-export const dynamic = "force-dynamic";
+// Refresh public CMS pages once a minute instead of rebuilding for every visitor.
+export const revalidate = 60;
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   const content = await getContent();

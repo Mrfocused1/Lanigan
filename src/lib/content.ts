@@ -228,7 +228,13 @@ function readClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { auth: { persistSession: false } }
+    {
+      auth: { persistSession: false },
+      global: {
+        // This anonymous client reads only published website content.
+        fetch: (input, init) => fetch(input, { ...init, next: { revalidate: 60 } }),
+      },
+    }
   );
 }
 

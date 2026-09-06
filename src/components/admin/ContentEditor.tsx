@@ -572,7 +572,7 @@ export default function ContentEditor() {
       {/* Sticky save bar */}
       <div className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-paper/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] items-center justify-end gap-4 px-5 py-3 md:px-8">
-          {status === "saved" && <span className="text-sm text-brand">✓ Saved — changes are live</span>}
+          {status === "saved" && <span className="text-sm text-brand">✓ Saved — public pages refresh automatically</span>}
           {status === "error" && <span className="text-sm text-red-600">Save failed</span>}
           <button onClick={save} disabled={status === "saving"} className="btn btn-primary !py-2.5">
             {status === "saving" ? "Saving…" : "Save changes"}
